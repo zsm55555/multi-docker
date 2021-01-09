@@ -16,9 +16,9 @@ after_success:
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-  - docker push $DOCKER_ID/francisgu/multi-client
-  - docker push $DOCKER_ID/francisgu/multi-nginx
-  - docker push $DOCKER_ID/francisgu/multi-server
-  - docker push $DOCKER_ID/francisgu/multi-worker
+  - docker push $DOCKER_ID/francisgu/multi-client:latest
+  - docker push $DOCKER_ID/francisgu/multi-nginx:latest
+  - docker push $DOCKER_ID/francisgu/multi-server:latest
+  - docker push $DOCKER_ID/francisgu/multi-worker:latest
   
   
