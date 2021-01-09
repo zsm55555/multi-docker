@@ -1,0 +1,24 @@
+sodo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t francisgu/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true francisgu/react-test npm test
+
+after_success:
+  - docker build -t francisgu/multi-client ./client
+  - docker build -t francisgu/multi-nginx ./nginx
+  - docker build -t francisgu/multi-server ./server
+  - docker build -t francisgu/multi-worker ./worker
+# Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# Take those images and push them to docker hub
+  - docker push francisgu/multi-client
+  - docker push francisgu/multi-nginx
+  - docker push francisgu/multi-server
+  - docker push francisgu/multi-worker
+  
+  
