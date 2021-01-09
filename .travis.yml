@@ -9,21 +9,21 @@ script:
   - docker run -e CI=true francisgu/react-test npm test
 
 after_success:
-  - docker build -t francisgu/multi-client ./client
-  - docker build -t francisgu/multi-nginx ./nginx
-  - docker build -t francisgu/multi-server ./server
-  - docker build -t francisgu/multi-worker ./worker
+  - docker build -t multi-client ./client
+  - docker build -t multi-nginx ./nginx
+  - docker build -t multi-server ./server
+  - docker build -t multi-worker ./worker
 
-  - docker tag francisgu/multi-client $DOCKER_ID/francisgu/multi-client
-  - docker tag francisgu/multi-nginx $DOCKER_ID/francisgu/multi-nginx
-  - docker tag francisgu/multi-server $DOCKER_ID/francisgu/multi-server
-  - docker tag francisgu/multi-worker $DOCKER_ID/francisgu/multi-worker
+  - docker tag multi-client $DOCKER_ID/multi-client
+  - docker tag multi-nginx $DOCKER_ID/multi-nginx
+  - docker tag multi-server $DOCKER_ID/multi-server
+  - docker tag multi-worker $DOCKER_ID/multi-worker
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-  - docker push $DOCKER_ID/francisgu/multi-client
-  - docker push $DOCKER_ID/francisgu/multi-nginx
-  - docker push $DOCKER_ID/francisgu/multi-server
-  - docker push $DOCKER_ID/francisgu/multi-worker
+  - docker push $DOCKER_ID/multi-client
+  - docker push $DOCKER_ID/multi-nginx
+  - docker push $DOCKER_ID/multi-server
+  - docker push $DOCKER_ID/multi-worker
   
   
