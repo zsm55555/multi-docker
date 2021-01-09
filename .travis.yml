@@ -16,9 +16,9 @@ after_success:
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-  - docker push zsm55555/learningdocker:francisgu/multi-client
-  - docker push zsm55555/learningdocker:francisgu/multi-nginx
-  - docker push zsm55555/learningdocker:francisgu/multi-server
-  - docker push zsm55555/learningdocker:francisgu/multi-worker
+  - docker push $DOCKER_ID/francisgu/multi-client
+  - docker push $DOCKER_ID/francisgu/multi-nginx
+  - docker push $DOCKER_ID/francisgu/multi-server
+  - docker push $DOCKER_ID/francisgu/multi-worker
   
   
