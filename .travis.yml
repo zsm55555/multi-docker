@@ -13,12 +13,17 @@ after_success:
   - docker build -t francisgu/multi-nginx ./nginx
   - docker build -t francisgu/multi-server ./server
   - docker build -t francisgu/multi-worker ./worker
+
+  - docker tag francisgu/multi-client $DOCKER_ID/francisgu/multi-client
+  - docker tag francisgu/multi-nginx $DOCKER_ID/francisgu/multi-nginx
+  - docker tag francisgu/multi-server $DOCKER_ID/francisgu/multi-server
+  - docker tag francisgu/multi-worker $DOCKER_ID/francisgu/multi-worker
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-  - docker push $DOCKER_ID/francisgu/multi-client:latest
-  - docker push $DOCKER_ID/francisgu/multi-nginx:latest
-  - docker push $DOCKER_ID/francisgu/multi-server:latest
-  - docker push $DOCKER_ID/francisgu/multi-worker:latest
+  - docker push $DOCKER_ID/francisgu/multi-client
+  - docker push $DOCKER_ID/francisgu/multi-nginx
+  - docker push $DOCKER_ID/francisgu/multi-server
+  - docker push $DOCKER_ID/francisgu/multi-worker
   
   
